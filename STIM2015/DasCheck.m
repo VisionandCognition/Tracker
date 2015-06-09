@@ -1,7 +1,7 @@
 function [Hit Time] = DasCheck
 
         global Par
-        global LPStat
+
         persistent PC %cached previous eye position
         persistent LObj %cached handel to plot object
         

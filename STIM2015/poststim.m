@@ -1,7 +1,6 @@
 %poststim
 
 global Par
-%global LPStat
 
 if isfield(Par,'DasOn') && Par.DasOn == 1
  dasclose();
@@ -10,6 +9,5 @@ if isfield(Par,'DasOn') && Par.DasOn == 1
 end
 
  Par.DasOn = 0;
-%  clear global LPStat
-  clear all
+ clear all
 %  close all

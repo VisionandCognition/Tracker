@@ -2,7 +2,6 @@ function runstim(Hnd)
  %Updated 26_03_2013 Chris van der Togt
 
  global Par   %global parameters
- global LPStat  %das status values, acronym for Data Aquisition System
  global StimObj %stimulus objects
  
  if ~isfield(StimObj, 'Stm')
