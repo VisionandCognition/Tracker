@@ -4,7 +4,7 @@
 #define DASCONTROL_API __declspec(dllimport)
 #endif
 
-extern "C"	DASCONTROL_API double* Status;
+extern "C"	DASCONTROL_API double Status[6];
 
 extern "C"	DASCONTROL_API bool Usemouse;
 
@@ -49,6 +49,8 @@ extern "C"  DASCONTROL_API int DO_Word( unsigned short DataValue);
 extern "C"  DASCONTROL_API int Clear_Word( void);
 
 extern "C"  DASCONTROL_API int DO_Bit( int BitNum, unsigned short BitValue);
+
+//extern "C"	DASCONTROL_API int WriteAuxport(BYTE bit, BYTE out);
 
 extern "C"  DASCONTROL_API int Juice(float Voltage);
 

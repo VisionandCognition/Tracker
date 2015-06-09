@@ -1,7 +1,7 @@
 #include "mex.h"
 #include "DasControl.h"
 
-static mxArray *persistent_array_ptr = NULL;
+//static mxArray *persistent_array_ptr = NULL;
 
 void mexFunction(
 				 int nlhs, mxArray *plhs[],
@@ -22,10 +22,10 @@ void mexFunction(
   //      mexPrintf("MEX-file reusing array\n");
 
  //   } else {
-        plhs[0] = mxCreateDoubleMatrix(10, 1, mxREAL);
+  //      plhs[0] = mxCreateDoubleMatrix(10, 1, mxREAL);
        
         //status is a pointer in the Dll, points to allocated memory
-        Status = mxGetPr(plhs[0]);  //return status (pointer lefthand side)
+//        Status = mxGetPr(plhs[0]);  //return status (pointer lefthand side)
  //   }
     
     Board = (int)mxGetScalar(prhs[0]);
