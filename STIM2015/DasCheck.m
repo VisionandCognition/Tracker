@@ -8,8 +8,8 @@ function [Hit Time] = DasCheck
 %        persistent SObj %cached handel to plot object
 %        persistent Tick %every tick update noise plot
 
-        Hit = LPStat(2);   %Hit yes or no           
-        Time = LPStat(1);  %time
+        Hit = LPStat(1);   %Hit yes or no           
+        Time = LPStat(0);  %time
         
        
         POS = dasgetposition();

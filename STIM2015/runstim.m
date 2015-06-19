@@ -142,13 +142,13 @@ FO = 0;
     %     2 enter target window
     
 
-    %LPStat(1) = time (ms) passed since last reset
-    %LPStat(2) = control window hit (1 : in or out, 2 : in correct
+    %LPStat(0) = time (ms) passed since last reset
+    %LPStat(1) = control window hit (1 : in or out, 2 : in correct
     %                  target window
-    %LPStat.(3) = hit position x
-    %LPStat(4) = hit postion y
-    %LPStat(5) = reaction time
-    %LPStat(6) = time saccade length
+    %LPStat.(2) = hit position x
+    %LPStat(3) = hit postion y
+    %LPStat(4) = reaction time
+    %LPStat(5) = time saccade length
 
     
      %subject has to start fixating central dot
@@ -261,7 +261,7 @@ FO = 0;
             if delay > 0
                 %calllib(Par.Dll, 'Check', delay)
                 dasrun(delay)
-                Hit = LPStat(2);  %don't wast time!!!! on updating the screen
+                Hit = LPStat(1);  %don't wast time!!!! on updating the screen
             else
                 disp('WARNING....not enough time between stimoffset and target onset.')
             end
@@ -297,14 +297,14 @@ FO = 0;
         if Hit ~= 0 && ~Abort %has entered a target window (false or correct)
         
             if Par.Mouserun
-                HP = line('XData', Par.ZOOM * (LPStat(3) + Par.MOff(1)), 'YData', Par.ZOOM * (LPStat(4) + Par.MOff(2)), 'EraseMode','none');
+                HP = line('XData', Par.ZOOM * (LPStat(2) + Par.MOff(1)), 'YData', Par.ZOOM * (LPStat(3) + Par.MOff(2)), 'EraseMode','none');
             else
-               HP = line('XData', Par.ZOOM * LPStat(3), 'YData', Par.ZOOM * LPStat(4), 'EraseMode','none');
+               HP = line('XData', Par.ZOOM * LPStat(2), 'YData', Par.ZOOM * LPStat(3), 'EraseMode','none');
             end
             set(HP, 'Marker', '+', 'MarkerSize', 20, 'MarkerEdgeColor', 'm')
             %drawnow
              
-            if Hit == 2 && Par.Reward && LPStat(6) < Times.Sacc %correct target, give juice 
+            if Hit == 2 && Par.Reward && LPStat(5) < Times.Sacc %correct target, give juice 
                   %  logCorrect = 1;           
                     dasbit( Par.CorrectB, 1);
                     dasbit( Par.RewardB, 1);
@@ -345,7 +345,7 @@ FO = 0;
          end                       
          [ Hit Lasttime] = DasCheck;
 %///////////////////////INTERTRIAL AND CLEANUP   
-         display(['hit ' num2str(Hit) ' reactiontime: ' num2str(LPStat(5))  ' saccadetime: ' num2str(LPStat(6))]);
+         display(['hit ' num2str(Hit) ' reactiontime: ' num2str(LPStat(4))  ' saccadetime: ' num2str(LPStat(5))]);
          disp(['stimulus-target duration: ' num2str((FS - FO)*1000) ' ms ']);  %check timing of target onset 
 
          %reset all bits to null
@@ -377,10 +377,10 @@ FO = 0;
 %          TrlCnt = Par.Trlcount;
 %          Par.log(TrlCnt).Word = I;
 %          Par.log(TrlCnt).Correct = logCorrect;
-%          Par.log(TrlCnt).SaccadeOnset = LPStat(5);
-%          Par.log(TrlCnt).Saccadelength = LPStat(6);
+%          Par.log(TrlCnt).SaccadeOnset = LPStat(4);
+%          Par.log(TrlCnt).Saccadelength = LPStat(5);
 %          Par.log(TrlCnt).eyetrace = dasgettrace();
-%          Par.log(TrlCnt).Timelastsample = LPStat(1); %with respect to last reset (Target onset)
+%          Par.log(TrlCnt).Timelastsample = LPStat(0); %with respect to last reset (Target onset)
          
          
          
