@@ -7,8 +7,7 @@ void mexFunction(
 				 int nrhs, const mxArray *prhs[])
 {
       double On;
-      long *Pos;
-      double * Out;
+      double *Pos;
       
           /* Check for proper number of arguments */
     if (nrhs != 1) {
@@ -18,11 +17,8 @@ void mexFunction(
         On = mxGetScalar(prhs[0]); 
               
        plhs[0] = mxCreateDoubleMatrix(2, 1, mxREAL);
-       Out = mxGetPr(plhs[0]);
-    
-       Pos = Use_Mouse( (unsigned short)On);
-       Out[0] = (double)Pos[0];
-       Out[1] = (double)Pos[1];
+       Pos = mxGetPr(plhs[0]);  
+       Use_Mouse( (unsigned short)On, Pos);
 }
     
 

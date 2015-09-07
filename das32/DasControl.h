@@ -24,21 +24,21 @@ extern "C"  DASCONTROL_API void ShiftOffset( float X, float Y);
 
 extern "C"	DASCONTROL_API void Check( unsigned short Pause);
 
-extern "C"	DASCONTROL_API double* get_Eye(void);
+extern "C"	DASCONTROL_API void get_Eye(double* Eye);
 
 extern "C"	DASCONTROL_API double* get_Noise(void);
 
 extern "C"	DASCONTROL_API void set_Noise( bool in);
 
-extern "C"	DASCONTROL_API double* get_Level( void);
+extern "C"	DASCONTROL_API void get_Level(double* Level);
 
 extern "C"	DASCONTROL_API void get_Rawtrace(double* trace);
 
 extern "C"	DASCONTROL_API void Set_Window( int Numwin, float* win, unsigned short Sqr, float SCx, float SCy);
 
-extern "C"	DASCONTROL_API long* Get_Cursor_Pos(void);
+extern "C"	DASCONTROL_API void get_Cursor_Pos(double* POS);
 
-extern "C"	DASCONTROL_API long* Use_Mouse( unsigned short MouseOn);
+extern "C"	DASCONTROL_API void Use_Mouse( unsigned short MouseOn, double* POS);
 
 extern "C"	DASCONTROL_API int ShowMouse( bool State);
 
