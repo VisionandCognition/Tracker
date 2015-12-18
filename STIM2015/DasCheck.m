@@ -12,14 +12,24 @@ function [Hit Time] = DasCheck
         Time = LPStat(0);  %time
         
        
-        POS = dasgetposition();
-                
+        POS = dasgetposition();                
         P = POS.*Par.ZOOM; %average position over window initialized in DasIni
+        
+%    If you start using matlab R2014b and above use following lines instead of next      
+%         if  ishandle(LObj)
+%             addpoints(LObj,[PC(1) P(1)],[PC(2) P(2)]);
+%         else
+%             LObj = animatedline( [P(1) P(1)],  [P(2) P(2)], 'MaximumNumPoints',200);
+%         end
+
         if  ishandle(LObj)
             set(LObj,  'XData', [PC(1) P(1)],  'YData', [PC(2) P(2)])
         else
             LObj = line( 'XData', [P(1) P(1)],  'YData', [P(2) P(2)], 'EraseMode','none');
         end
+        
+
+        
                
 %         if isempty(Tick) || Tick > Time
 %              Tick = Time;
