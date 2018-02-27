@@ -253,46 +253,49 @@ function Proj_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-    answer = inputdlg('New project title', '');
+answer = inputdlg('New project title', '');
+if ~isempty(answer)
     handles.VC.projects =  [ handles.VC.projects;  answer ];
     set(handles.e_project, 'string', handles.VC.projects );
     handles.record.Project = answer{1};
     set(handles.e_project, 'Value',  length(handles.VC.projects))
-
+    
     guidata(hObject, handles);
     
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Projects '  ...
-                            '(strname) ' ...
-                            'VALUES( "' handles.record.Project '" ) ' ];
-                
+        '(strname) ' ...
+        'VALUES( "' handles.record.Project '" ) ' ];
+    
     mysql(QUERY);
     mysql('close')
-
+end
+    
 % --- Executes on button press in Prot_pb.
 function Prot_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Prot_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-
-    answer = inputdlg('New protocol', '');
+answer = inputdlg('New protocol', '');
+if ~isempty(answer)
     handles.VC.protocols =  [ handles.VC.protocols;  answer ];
     set(handles.e_protocol, 'string', handles.VC.protocols );
     handles.record.Protocol = answer{1};
     set(handles.e_protocol, 'Value', length(handles.VC.protocols))
-
+    
     guidata(hObject, handles);
     
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Protocols '  ...
-                            '(strname) ' ...
-                            'VALUES( "' handles.record.Protocol '" ) ' ];
-                
+        '(strname) ' ...
+        'VALUES( "' handles.record.Protocol '" ) ' ];
+    
     mysql(QUERY);
     mysql('close')
+end
 
 % --- Executes on button press in Subject_pb.
 function Subject_pb_Callback(hObject, eventdata, handles)
@@ -301,8 +304,10 @@ function Subject_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-    answer = inputdlg({'Name for new subject'}, 'New' );
-    handles.VC.subjects =  [ handles.VC.subjects;  answer ];
+answer = inputdlg({'Name for new subject', 'Species (human, monkey, mouse)', 'Sex', 'Genotype'}, 'New' );
+
+if ~isempty(answer)
+    handles.VC.subjects =  [ handles.VC.subjects;  answer{1} ];
     set(handles.e_subject, 'string', handles.VC.subjects )
     set(handles.e_subject, 'Value', length(handles.VC.subjects))
     handles.record.Subject = answer{1};
@@ -310,14 +315,15 @@ function Subject_pb_Callback(hObject, eventdata, handles)
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Subjects '  ...
-            '(strname) ' ...
-            'VALUES( "' answer{1} '" ) ' ];
-                
+        '(strname, species, sex, genotype) ' ...
+        'VALUES( "' answer{1} '" , "' answer{2} '" , "' answer{3} '" , "' answer{4} '" ) ' ];
+    
     mysql(QUERY);
     mysql('close');
     
     guidata(hObject, handles);
-
+end
+    
 % --- Executes on button press in date_pb.
 function date_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to date_pb (see GCBO)
@@ -362,23 +368,25 @@ function setup_pb_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-    answer = inputdlg('New setup', '');
+answer = inputdlg('New setup', '');
+if ~isempty(answer)
     handles.VC.setups =  [ handles.VC.setups;  answer{1} ];
     set(handles.e_setup, 'string', handles.VC.setups );
     set(handles.e_setup, 'Value', length(handles.VC.setups));
     
     handles.record.Setup = answer{1};
-
+    
     guidata(hObject, handles);
     
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Setups '  ...
-                            '(strname) ' ...
-                            'VALUES( "' handles.record.Setup '" ) ' ];
-                
+        '(strname) ' ...
+        'VALUES( "' handles.record.Setup '" ) ' ];
+    
     mysql(QUERY);
     mysql('close')
+end
 
 % --- Executes on selection change in e_stim.
 function e_stim_Callback(hObject, eventdata, handles)
@@ -412,22 +420,24 @@ function stim_pb_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-    answer = inputdlg({'Name for new stimulus'}, 'New' );
+answer = inputdlg({'Name for new stimulus'}, 'New' );
+if ~isempty(answer)
     handles.VC.stims =  [ handles.VC.stims;  answer{1} ];
     set(handles.e_stim, 'string', handles.VC.stims )
     set(handles.e_stim, 'Value', length(handles.VC.stims))
     handles.record.Stimulus = answer{1};
     guidata(hObject, handles);
-        
+    
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Stimulus '  ...
-            '(strname) ' ...
-            'VALUE( "' handles.record.Stimulus '" ) ' ];
-                
+        '(strname) ' ...
+        'VALUE( "' handles.record.Stimulus '" ) ' ];
+    
     mysql(QUERY);
     mysql('close');
-
+end
+    
 % --- Executes on selection change in e_researcher.
 function e_researcher_Callback(hObject, eventdata, handles)
 % hObject    handle to e_researcher (see GCBO)
@@ -462,22 +472,23 @@ function Research_pb_Callback(hObject, eventdata, handles)
 
 
     answer = inputdlg({'Name for new researcher'}, 'New' );
-    handles.VC.researchers =  [ handles.VC.researchers;  answer{1} ];
-    set(handles.e_researcher, 'string', handles.VC.researchers)
-    set(handles.e_researcher, 'Value', length(handles.VC.researchers))
-    handles.record.Researcher= answer{1};
-    
-    dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
-    dgc = mysql('use', handles.dbpar.Database);
-    QUERY = ['INSERT INTO Researcher '  ...
+    if ~isempty(answer)
+        handles.VC.researchers =  [ handles.VC.researchers;  answer{1} ];
+        set(handles.e_researcher, 'string', handles.VC.researchers)
+        set(handles.e_researcher, 'Value', length(handles.VC.researchers))
+        handles.record.Researcher= answer{1};
+        
+        dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
+        dgc = mysql('use', handles.dbpar.Database);
+        QUERY = ['INSERT INTO Researcher '  ...
             '(strname) ' ...
             'VALUES( "' answer{1} '" ) ' ];
-                
-    mysql(QUERY);
-    mysql('close');
-    
-    guidata(hObject, handles);
-    
+        
+        mysql(QUERY);
+        mysql('close');
+        
+        guidata(hObject, handles);
+    end
     
    
 
@@ -523,7 +534,8 @@ function dataset_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to dataset_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-    answer = inputdlg({'Name for new dataset'}, 'New' );
+answer = inputdlg({'Name for new dataset'}, 'New' );
+if ~isempty(answer)
     handles.VC.datasets =  [ handles.VC.datasets;  answer{1} ];
     set(handles.e_dataset, 'string', handles.VC.datasets)
     set(handles.e_dataset, 'Value', length(handles.VC.datasets))
@@ -532,14 +544,14 @@ function dataset_pb_Callback(hObject, eventdata, handles)
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Datasets '  ...
-            '(strname) ' ...
-            'VALUES( "' answer{1} '" ) ' ];
-                
+        '(strname) ' ...
+        'VALUES( "' answer{1} '" ) ' ];
+    
     mysql(QUERY);
     mysql('close');
     
     guidata(hObject, handles);
-
+end
 
 % --- Executes on selection change in e_group.
 function e_group_Callback(hObject, eventdata, handles)
@@ -572,7 +584,8 @@ function Group_pb_Callback(hObject, eventdata, handles)
 % hObject    handle to Group_pb (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-    answer = inputdlg({'Name for new group'}, 'New' );
+answer = inputdlg({'Name for new group'}, 'New' );
+if ~isempty(answer)
     handles.VC.groups =  [ handles.VC.groups;  answer{1} ];
     set(handles.e_group, 'string', handles.VC.groups)
     set(handles.e_group, 'Value', length(handles.VC.groups))
@@ -581,10 +594,11 @@ function Group_pb_Callback(hObject, eventdata, handles)
     dgc = mysql('open', handles.dbpar.Server, handles.dbpar.User, handles.dbpar.Passw);
     dgc = mysql('use', handles.dbpar.Database);
     QUERY = ['INSERT INTO Groups '  ...
-            '(strname) ' ...
-            'VALUES( "' answer{1} '" ) ' ];
-                
+        '(strname) ' ...
+        'VALUES( "' answer{1} '" ) ' ];
+    
     mysql(QUERY);
     mysql('close');
     
     guidata(hObject, handles);
+end
