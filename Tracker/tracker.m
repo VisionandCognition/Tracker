@@ -22,7 +22,7 @@ function varargout = tracker(varargin)
 
 % Edit the above text to modify the response to help tracker
 
-% Last Modified by GUIDE v2.5 20-Jul-2010 17:32:31
+% Last Modified by GUIDE v2.5 08-Jul-2021 14:59:57
 % UPDATES
 % 7 7 2016 : Par.ScaleOff; % offset and scaling of eyechannels
 
@@ -221,7 +221,8 @@ if ~isempty(KP)
         if Par.MousePress == 2
             %Par.OFFx = Par.OFFx - 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', -1, 0);
-            Par.ScaleOff = dasoffset( -1, 0);
+            %Par.ScaleOff = dasoffset( -1, 0);
+            dasoffset( -1, 0);
         else
             Par.SCx = Par.SCx * 1/1.1;
             set(handles.lblScx, 'String', num2str(Par.SCx, 4))
@@ -234,7 +235,8 @@ if ~isempty(KP)
         if Par.MousePress == 2
             %Par.OFFx = Par.OFFx + 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', 1, 0);
-            Par.ScaleOff = dasoffset( 1, 0);
+            %Par.ScaleOff = dasoffset( 1, 0);
+            dasoffset( 1, 0);
         else
             Par.SCx = Par.SCx * 1.1;
             set(handles.lblScx, 'String', num2str(Par.SCx, 4))
@@ -246,7 +248,8 @@ if ~isempty(KP)
        if Par.MousePress == 2
             %Par.OFFy = Par.OFFy + 1 * Par.ydir;
             %calllib(Par.Dll, 'ShiftOffset', 0, 1);
-            Par.ScaleOff = dasoffset( 0, 1);
+            %Par.ScaleOff = dasoffset( 0, 1);
+            dasoffset( 0, 1);
        else
             Par.SCy = Par.SCy * 1.1;
             set(handles.lblScy, 'String', num2str(Par.SCy, 4))
@@ -258,7 +261,8 @@ if ~isempty(KP)
         if Par.MousePress == 2
            % Par.OFFy = Par.OFFy - 1 * Par.ydir;
             %calllib(Par.Dll, 'ShiftOffset', 0, -1);
-            Par.ScaleOff = dasoffset( 0, -1);
+            %Par.ScaleOff = dasoffset( 0, -1);
+            dasoffset( 0, -1);
         else
             Par.SCy = Par.SCy * 1/1.1;
             set(handles.lblScy, 'String', num2str(Par.SCy, 4))
@@ -278,14 +282,14 @@ if ~isempty(KP)
             Par.MOff = dasusemouse( 1 );
        else
            %calllib(Par.Dll,'SetZero');
-           Par.ScaleOff = daszero();
+           daszero();
        end
     
     case 106 %j key was pressed , give juice reward
 %         calllib(Par.Dll, 'DO_Bit', Par.RewardB, 1);
 %         calllib(Par.Dll, 'Juice', 3.5);
         dasbit( Par.RewardB, 1);
-        dasjuice( 4 );
+        dasjuice( 6 );
         pause(Par.RewardTime)
 %         calllib(Par.Dll, 'DO_Bit', Par.RewardB, 0);
 %         calllib(Par.Dll, 'Juice', 0.0);
@@ -1546,4 +1550,3 @@ function OnOFF_noise_Callback(hObject, eventdata, handles)
         
         
         
-
