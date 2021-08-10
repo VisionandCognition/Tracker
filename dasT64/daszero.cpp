@@ -8,7 +8,7 @@ void mexFunction(
 {
        double *raw;
     
-       plhs[0] = mxCreateDoubleMatrix(nChans-2, 1, mxREAL);
+       plhs[0] = mxCreateDoubleMatrix(2, 1, mxREAL);
        raw = mxGetPr(plhs[0]);   
     
        SetZero( raw );
