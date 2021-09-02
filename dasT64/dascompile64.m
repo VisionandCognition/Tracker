@@ -2,6 +2,9 @@
 p = mfilename('fullpath');
 p = replace(p,'\dascompile64','');
 
+disp('dasrotate')
+mex(['-L' p ], '-lDasControl', 'dasrotate.cpp' )
+
 disp('dassettransform')
 mex(['-L' p ], '-lDasControl', 'dassettransform.cpp' )
 

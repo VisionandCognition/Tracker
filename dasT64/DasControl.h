@@ -42,6 +42,8 @@ extern "C"	DASCONTROL_API void get_Rawtrace(double* trace);
 
 extern "C"  DASCONTROL_API void Set_Transform(Transform TF);
 
+extern "C"  DASCONTROL_API void Rotate(float angle);
+
 extern "C"	DASCONTROL_API void Set_Window(int Numwin, float* win, unsigned short Sqr);
 
 extern "C"	DASCONTROL_API void get_Cursor_Pos(double* POS);
