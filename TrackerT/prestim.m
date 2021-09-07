@@ -35,6 +35,7 @@ Par.SCx = 0.2; %initial scale in control window
 Par.SCy = 0.2;
 Par.OFFx = 0; %initial eye offset x => (center) of camera das output
 Par.OFFy = 0; %initial eye offset y
+Par.Angle = 0; %Initialize rotation angle
 %if using eyelink set to -1.0 else 1.0
 Par.xdir = 1;
 Par.ydir = 1;

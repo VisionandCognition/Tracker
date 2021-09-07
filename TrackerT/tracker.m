@@ -22,7 +22,7 @@ function varargout = tracker(varargin)
 
 % Edit the above text to modify the response to help tracker
 
-% Last Modified by GUIDE v2.5 08-Jul-2021 14:59:57
+% Last Modified by GUIDE v2.5 07-Sep-2021 13:44:56
 % UPDATES
 % 7 7 2016 : Par.ScaleOff; % offset and scaling of eyechannels
 
@@ -218,7 +218,10 @@ if ~isempty(KP)
      
    case 28  %left arrow was pressed
         
-        if Par.MousePress == 2
+       if Par.MousePress == 1
+            Par.Angle = Par.Angle + 1;
+            dasrotate(Par.Angle);
+       elseif Par.MousePress == 2
             %Par.OFFx = Par.OFFx - 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', -1, 0);
             %Par.ScaleOff = dasoffset( -1, 0);
@@ -233,7 +236,10 @@ if ~isempty(KP)
         
     case 29  %Right arrow was pressed
         
-        if Par.MousePress == 2
+       if Par.MousePress == 1
+            Par.Angle = Par.Angle - 1;
+            dasrotate(Par.Angle);
+       elseif Par.MousePress == 2
             %Par.OFFx = Par.OFFx + 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', 1, 0);
             %Par.ScaleOff = dasoffset( 1, 0);
@@ -1400,6 +1406,16 @@ global Par
 Par.MousePress = 0;
 
 
+% --- Executes on button press in rb_ROTATE.
+function rb_ROTATE_Callback(hObject, eventdata, handles)
+% hObject    handle to rb_ROTATE (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of rb_ROTATE
+global Par
+Par.MousePress = 1;
+
 
 % --- Executes on button press in rb_SHIFT.
 function rb_SHIFT_Callback(hObject, eventdata, handles)
@@ -1555,4 +1571,4 @@ function OnOFF_noise_Callback(hObject, eventdata, handles)
         end
         
         
-        
+       
