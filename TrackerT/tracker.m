@@ -164,7 +164,7 @@ if isfield(handles, 'DasOn') && handles.DasOn
     axes(handles.axes1);
    
     %the runfunction is now a handle, don't change!!!!!
-    handles.RUNFUNC([handles.T_Trl handles.T_Sd]) %gets a handle to update trial numbers and noise value
+    handles.RUNFUNC([handles.T_Trl handles.lbl_Rot]) %gets a handle to update trial numbers and angle value
     
 end  %IS_RUNNING%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Par.isRunning = false;
@@ -221,6 +221,7 @@ if ~isempty(KP)
        if Par.MousePress == 1
             Par.Angle = Par.Angle + 1;
             dasrotate(Par.Angle);
+            set(handles.lbl_Rot, 'String', num2str(Par.Angle))
        elseif Par.MousePress == 2
             %Par.OFFx = Par.OFFx - 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', -1, 0);
@@ -239,6 +240,7 @@ if ~isempty(KP)
        if Par.MousePress == 1
             Par.Angle = Par.Angle - 1;
             dasrotate(Par.Angle);
+            set(handles.lbl_Rot, 'String', num2str(Par.Angle))
        elseif Par.MousePress == 2
             %Par.OFFx = Par.OFFx + 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', 1, 0);
@@ -284,7 +286,7 @@ if ~isempty(KP)
        % disp('keypress ESC')
         
     case 122 %Z key was pressed   
-       % Par.SetZero = true;
+       Par.SetZero = true;
        % disp('keypress ZERO')
        if Par.SetZero
            if Par.Mouserun
