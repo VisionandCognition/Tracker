@@ -245,7 +245,7 @@ if ~isempty(KP)
             %Par.OFFx = Par.OFFx + 1 * Par.xdir;
             %calllib(Par.Dll, 'ShiftOffset', 1, 0);
             %Par.ScaleOff = dasoffset( 1, 0);
-            Par.T = dasoffset( 20*Par.SCx, 0);
+            Par.T = dasoffset( 0.01, 0);
         else
             Par.SCx = Par.SCx * 1.1;
             set(handles.lblScx, 'String', num2str(Par.SCx, 4))
@@ -259,7 +259,7 @@ if ~isempty(KP)
             %Par.OFFy = Par.OFFy + 1 * Par.ydir;
             %calllib(Par.Dll, 'ShiftOffset', 0, 1);
             %Par.ScaleOff = dasoffset( 0, 1);
-            Par.T = dasoffset( 0, 20*Par.SCy);
+            Par.T = dasoffset( 0, 0.01);
        elseif Par.MousePress == 0
             Par.SCy = Par.SCy * 1.1;
             set(handles.lblScy, 'String', num2str(Par.SCy, 4))
