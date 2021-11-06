@@ -6,10 +6,6 @@
 
 typedef unsigned char BYTE;
 
-struct Transform{
-	float Mtrans[3][3];
-};
-
 extern "C"	DASCONTROL_API double Status[7];
 
 extern "C"	DASCONTROL_API bool Usemouse;
@@ -24,9 +20,9 @@ extern "C"	DASCONTROL_API void Das_Pause(unsigned short Pause );
 
 extern "C"  DASCONTROL_API void Pulse( unsigned short Repeats, unsigned short Interval);
 
-extern "C"  DASCONTROL_API Transform SetZero(double* Raw);
+extern "C"  DASCONTROL_API void SetZero(double* RAW);
 
-extern "C"  DASCONTROL_API Transform ShiftOffset(float X, float Y);
+extern "C"  DASCONTROL_API void ShiftOffset(float X, float Y);
 
 extern "C"	DASCONTROL_API void Check( unsigned short Pause);
 
@@ -40,9 +36,9 @@ extern "C"	DASCONTROL_API void get_Level(double* Level);
 
 extern "C"	DASCONTROL_API void get_Rawtrace(double* trace);
 
-extern "C"  DASCONTROL_API void Set_Transform(Transform TF);
-
 extern "C"  DASCONTROL_API void Rotate(float angle);
+
+extern "C"  DASCONTROL_API void setScale(float Scx, float Scy);
 
 extern "C"	DASCONTROL_API void Set_Window(int Numwin, float* win, unsigned short Sqr);
 

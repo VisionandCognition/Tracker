@@ -5,7 +5,7 @@ void mexFunction(
 				 int nlhs, mxArray *plhs[],
 				 int nrhs, const mxArray *prhs[])
 {
-   float X,  Y;
+   float Scx,  Scy;
  
     /* Check for proper number of arguments */
     if (nrhs != 2) {
@@ -13,10 +13,10 @@ void mexFunction(
         return;
     }
     
-    X = (float)mxGetScalar(prhs[0]);
-    Y = (float)mxGetScalar(prhs[1]);
+    Scx = (float)mxGetScalar(prhs[0]);
+    Scy = (float)mxGetScalar(prhs[1]);
     
-   ShiftOffset( X, Y);     
+   setScale( Scx, Scy);     
 }
     
 

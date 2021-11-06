@@ -5,8 +5,8 @@ p = replace(p,'\dascompile64','');
 disp('dasrotate')
 mex(['-L' p ], '-lDasControl', 'dasrotate.cpp' )
 
-disp('dassettransform')
-mex(['-L' p ], '-lDasControl', 'dassettransform.cpp' )
+disp('dassetscale')
+mex(['-L' p ], '-lDasControl', 'dasscale.cpp' )
 
 disp('dasinit')
 mex(['-L' p ], '-lDasControl', 'dasinit.cpp' )

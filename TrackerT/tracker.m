@@ -22,7 +22,7 @@ function varargout = tracker(varargin)
 
 % Edit the above text to modify the response to help tracker
 
-% Last Modified by GUIDE v2.5 07-Sep-2021 13:44:56
+% Last Modified by GUIDE v2.5 05-Nov-2021 16:30:49
 % UPDATES
 % 7 7 2016 : Par.ScaleOff; % offset and scaling of eyechannels
 
@@ -223,14 +223,11 @@ if ~isempty(KP)
             dasrotate(Par.Angle);
             set(handles.lbl_Rot, 'String', num2str(Par.Angle))
        elseif Par.MousePress == 2
-            %Par.OFFx = Par.OFFx - 1 * Par.xdir;
-            %calllib(Par.Dll, 'ShiftOffset', -1, 0);
-            %Par.ScaleOff = dasoffset( -1, 0);
-            Par.T = dasoffset( -20*Par.SCx, 0);
+            dasoffset( -1, 0);
         else
             Par.SCx = Par.SCx * 1/1.1;
+            dasscale(Par.SCx*Par.xdir, Par.SCy*Par.ydir);
             set(handles.lblScx, 'String', num2str(Par.SCx, 4))
-            updateTransform()
         end
 
         %disp('keypress left')
@@ -242,42 +239,33 @@ if ~isempty(KP)
             dasrotate(Par.Angle);
             set(handles.lbl_Rot, 'String', num2str(Par.Angle))
        elseif Par.MousePress == 2
-            %Par.OFFx = Par.OFFx + 1 * Par.xdir;
-            %calllib(Par.Dll, 'ShiftOffset', 1, 0);
-            %Par.ScaleOff = dasoffset( 1, 0);
-            Par.T = dasoffset( 0.01, 0);
+            dasoffset( 1, 0);
         else
             Par.SCx = Par.SCx * 1.1;
+            dasscale(Par.SCx*Par.xdir, Par.SCy*Par.ydir);
             set(handles.lblScx, 'String', num2str(Par.SCx, 4))
-            updateTransform()
         end
        % disp('keypress right')
      
     case 30  %up arrow was pressed
         
        if Par.MousePress == 2
-            %Par.OFFy = Par.OFFy + 1 * Par.ydir;
-            %calllib(Par.Dll, 'ShiftOffset', 0, 1);
-            %Par.ScaleOff = dasoffset( 0, 1);
-            Par.T = dasoffset( 0, 0.01);
+            dasoffset( 0, 1);
        elseif Par.MousePress == 0
             Par.SCy = Par.SCy * 1.1;
+            dasscale(Par.SCx*Par.xdir, Par.SCy*Par.ydir);
             set(handles.lblScy, 'String', num2str(Par.SCy, 4))
-            updateTransform()
        end
         %disp('keypress up')
         
     case 31  %down arrow was pressed
                
         if Par.MousePress == 2
-           % Par.OFFy = Par.OFFy - 1 * Par.ydir;
-            %calllib(Par.Dll, 'ShiftOffset', 0, -1);
-            %Par.ScaleOff = dasoffset( 0, -1);
-            Par.T = dasoffset( 0, -20*Par.SCy);
+            dasoffset( 0, -1);
         elseif Par.MousePress == 0
             Par.SCy = Par.SCy * 1/1.1;
+            dasscale(Par.SCx*Par.xdir, Par.SCy*Par.ydir);
             set(handles.lblScy, 'String', num2str(Par.SCy, 4))
-            updateTransform()
         end
        % disp('keypress down')
     
@@ -290,23 +278,17 @@ if ~isempty(KP)
        % disp('keypress ZERO')
        if Par.SetZero
            if Par.Mouserun
-               %             LPM = calllib(Par.Dll, 'Use_Mouse', Par.Mouserun );
-               %             setdatatype(LPM, 'int32Ptr', 2, 1);
                Par.MOff = dasusemouse( 1 );
            else
                %calllib(Par.Dll,'SetZero');
-               [~, Par.T] = daszero();
+               daszero();
            end
        end
     
     case 106 %j key was pressed , give juice reward
-%         calllib(Par.Dll, 'DO_Bit', Par.RewardB, 1);
-%         calllib(Par.Dll, 'Juice', 3.5);
         dasbit( Par.RewardB, 1);
         dasjuice( 6 );
         pause(Par.RewardTime)
-%         calllib(Par.Dll, 'DO_Bit', Par.RewardB, 0);
-%         calllib(Par.Dll, 'Juice', 0.0);
         dasbit( Par.RewardB, 0);
         dasjuice( 0 );
         disp('Reward')
