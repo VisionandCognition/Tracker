@@ -11,9 +11,12 @@ Board = int32(22);  %mcc board = 22; Demo-board = 0
  end
  
 if Par.DasOn ~= 1
- 
+ try 
     dasinit( Board, 2);  %mexfunction acces!! give board number
     Par.DasOn = 1;                %and number of channels
+ catch
+     errordlg('no dascard')
+ end
 end
 
 %initialize  Cogent 

@@ -99,9 +99,9 @@
             <h3>Your GUIDE app was migrated to App Designer and some action is required.</h3>
             <h2>Migration Results</h2>
             <ul class="childHasIcon">
-                <li class="success"><b>tracker_App.mlapp</b> file created</li>
+                <li class="success"><b>tracker_App_1.mlapp</b> file created</li>
                 <li class="success"><b>1559</b> lines of code analyzed in tracker.m</li>
-                <li class="success"><b>81</b> components created and initialized</li>
+                <li class="success"><b>80</b> components created and initialized</li>
                 <li class="success"><b>48</b> callbacks and utility functions configured and enabled to function in App Designer</li>
             </ul>
         </section>
@@ -120,10 +120,11 @@
 <tr><td><code>CreateFcn</code></td><td><div class=""><code>PixDeg</code></div></td><td rowspan="1"><div>This callback property for the component(s) is not supported in App Designer and was not migrated.</div><div class="detailsWorkaround"><span class="detailsWorkaroundHeader">Action:</span><span class="detailsWorkaroundText">If the callback code can be executed after all the app components have been created, then move that code to the <code>tracker_OpeningFcn</code>.</span></div></tr>
 <tr><td><code>Callback</code></td><td><div class=""><code>juiceradio</code></div>
 <div class=""><code>rb_Drum</code></div>
-<div class=""><code>rb_SCALE</code></div>
+<div class=""><code>rb_ROTATE</code></div>
+<div class="hidden"><code>rb_SCALE</code></div>
 <div class="hidden"><code>rb_SHIFT</code></div>
 <div class="hidden"><code>RB_Sqr</code></div>
-<div class="showMore"><a href="#" onclick="toggleShowMore(this); return false;">Show more (2)</a></div>
+<div class="showMore"><a href="#" onclick="toggleShowMore(this); return false;">Show more (3)</a></div>
 <div class="showMore hidden"><a href="#" onclick="toggleShowMore(this); return false;">Show less</a></div></td><td rowspan="1"><div>Callbacks for radio and toggle buttons must be added to a parent button group.</div><div class="detailsWorkaround"><span class="detailsWorkaroundHeader">Action:</span><span class="detailsWorkaroundText">Use the <code>SelectionChangedFcn</code> callback of the parent button group.</span></div></tr>
     </table>
 </section>
