@@ -1,6 +1,8 @@
-function [Hit Time] = DasCheck
+function [Hit, Time] = DasCheck
+%Zoom removed  21/03/2022
+%chris van der Togt
 
-        global Par
+%        global Par
 
         persistent PC %cached previous eye position
         persistent LObj %cached handel to plot object
@@ -12,8 +14,8 @@ function [Hit Time] = DasCheck
         Time = LPStat(0);  %time
         
        
-        POS = dasgetposition();                
-        P = POS.*Par.ZOOM; %average position over window initialized in DasIni
+        P = dasgetposition();                
+       % P = POS.*Par.ZOOM; %average position over window initialized in DasIni
         
 %    If you start using matlab R2014b and above use following lines instead of next      
         if  ishandle(LObj)
@@ -24,7 +26,6 @@ function [Hit Time] = DasCheck
 
 %         if  ishandle(LObj)
 %             set(LObj,  'XData', [PC(1) P(1)],  'YData', [PC(2) P(2)])
-%         else
 %             LObj = line( 'XData', [P(1) P(1)],  'YData', [P(2) P(2)], 'EraseMode','none');
 %         end
         

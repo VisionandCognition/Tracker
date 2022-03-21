@@ -16,18 +16,18 @@ if ~isfield(Par, 'DasOn') || Par.DasOn ~= 1
 end
 
 %initialize  Psychophysics toolbox 
-% AssertOpenGL 
+ AssertOpenGL 
 % % Find the screen to use for display:
-% screenid=max(Screen('Screens')); 
+ screenid=max(Screen('Screens')); 
 % % Disable Synctests for this simple demo:
-% Screen('Preference','SkipSyncTests',1);
+ Screen('Preference','SkipSyncTests',1);
 
 % Setup Psychtoolbox for OpenGL 3D rendering support and initialize the
 % mogl OpenGL for Matlab wrapper:
 %InitializeMatlabOpenGL(0, 3)
 
 % Open a double-buffered full-screen window on the main display screen.
-% [win , winRect] = Screen('OpenWindow', screenid - 1);  
+ [win , winRect] = Screen('OpenWindow', screenid);  
 
 %////////////////////global variable Par settings////////////////////////////////////////
 Par.SetZero = false; %initialize zero key to not pressed
@@ -78,18 +78,18 @@ Par.RewardTime = 0.150; %Reward time is set to 100ms
 Par.fliptime = 1/60;
 
 %check if refresh rate is correct
-% Par.Framerate = Screen('FrameRate', win); 
-% T = zeros(100,1);
-% for i = 1:100
-%     T(i) = Screen('Flip', win, 0);
-% end
-% Rf = 1/ mean(diff(T(2:100)));
-% if round(Par.Framerate) ~= round(Rf/10)  %should be approximately the same
-%     disp(['Warning!: refreshrate not properly reported; ' num2str(Par.Framerate) 'Hz'] ) 
-%     Par.fliptime = mean(diff(T(2:100)))*1000; %in ms
-% else
-%     Par.fliptime = 100000/Par.Framerate; %fliptime in ms
-% end
+Par.Framerate = Screen('FrameRate', win); 
+T = zeros(100,1);
+for i = 1:100
+    T(i) = Screen('Flip', win, 0);
+end
+Rf = 1/ mean(diff(T(2:100)));
+if round(Par.Framerate) ~= round(Rf/10)  %should be approximately the same
+    disp(['Warning!: refreshrate not properly reported; ' num2str(Par.Framerate) 'Hz'] ) 
+    Par.fliptime = mean(diff(T(2:100)))*1000; %in ms
+else
+    Par.fliptime = 100000/Par.Framerate; %fliptime in ms
+end
 
 Par.Times.ToFix = 2000; %time to enter fix window in ms
 Par.Times.Fix = 300;  %Time in fixation window
