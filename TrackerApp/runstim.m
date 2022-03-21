@@ -174,12 +174,8 @@ FO = 0;
         Hit = 0;
         while Time < FIXT && Hit== 0
             %Check for 10 ms
-            dasrun(5)
-            
+            dasrun(5)            
               %detect eye enter/exit of control windows
-                                            %this will also automaitcally
-                                            %occur during pauzes due to a
-                                            %callback routine run every single ms
             [Hit Time] = DasCheck; %retrieve eyechannel buffer and events, plot eye motion, 
         end
         
@@ -308,7 +304,7 @@ FO = 0;
                   %  logCorrect = 1;           
                     dasbit( Par.CorrectB, 1);
                     dasbit( Par.RewardB, 1);
-                    dasjuice( 5 ); 
+                    dasjuice( 5 ); %level of voltage to open the valve
                     Par.Corrcount = Par.Corrcount + 1; %log correct trials
                    % beep
  
