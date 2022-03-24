@@ -5,10 +5,11 @@ global Par;
 
 BtOn = 0;  %if using button presses set to 1
 Board = int32(22);  %mcc board = 22; Demo-board = 0 
+nChan = 8; %how many channels to initiate (little loss in launching all)
 
 if ~isfield(Par, 'DasOn') || Par.DasOn ~= 1
  try 
-    dasinit( Board, 2);  %mexfunction acces!! give board number
+    dasinit(Board, nChan);  %mexfunction acces!! give board number
     Par.DasOn = 1;                %and number of channels
  catch
      Par.DasOn = 0;
