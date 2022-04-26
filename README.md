@@ -1,4 +1,5 @@
 # Tracker GUI and Das Api
+[![DOI](https://zenodo.org/badge/36734759.svg)](https://zenodo.org/badge/latestdoi/36734759)  
 Tracker is a stimulus control utility originally developed by Chris van der Togt for the Vision & Cognition laboratory of the Netherlands Institute for Neuroscience. It can be used for psychophysical experimentation and training, with eye control using a Measurement and Computing IO card.
 
 For the version of Tracker that has been altered by Chris Klink for use with NHP-MRI experiments see: https://github.com/VisionandCognition/Tracker-MRI
