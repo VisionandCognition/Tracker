@@ -14,4 +14,8 @@ For the version of Tracker that has been altered by Chris Klink for use with NHP
 - Compile dascard libraries for 64-bit Linux to allow a sswitch of the entire system towards more low-level control       
 
 ## Acknowledgements     
-Please acknowledge Chris van der Togt when using this utility for your published research. [![DOI](https://zenodo.org/badge/36734759.svg)](https://zenodo.org/badge/latestdoi/36734759) 
+Please acknowledge Chris van der Togt when using this utility for your published research.  
+
+Cite as:  
+Chris van der Togt, Chris Klink, Paolo Papale, & Rob Teeuwen. (2022). VisionandCognition/Tracker: Public Release (Version v2022). Zenodo. https://doi.org/10.5281/zenodo.6489014
+
