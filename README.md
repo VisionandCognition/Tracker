@@ -14,4 +14,4 @@ For the version of Tracker that has been altered by Chris Klink for use with NHP
 - Compile dascard libraries for 64-bit Linux to allow a sswitch of the entire system towards more low-level control       
 
 ## Acknowledgements     
-Please acknowledge Chris van der Togt's efforts when using this utility for your published research. In the future, this package will be registered with a doi so it can be cited in publications.
+Please acknowledge Chris van der Togt when using this utility for your published research. [![DOI](https://zenodo.org/badge/36734759.svg)](https://zenodo.org/badge/latestdoi/36734759) 
