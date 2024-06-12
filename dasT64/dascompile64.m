@@ -65,8 +65,11 @@ mex( ['-L' p ], '-lDasControl', 'dasword.cpp' )
 disp('dasclearword')
 mex( ['-L' p ], '-lDasControl', 'dasclearword.cpp' )
 
-disp('daspulse')
+disp('dasbit')
 mex( ['-L' p ], '-lDasControl', 'dasbit.cpp' )
+
+disp('dasauxbit')
+mex( ['-L' p ], '-lDasControl', 'dasauxbit.cpp' )
 
 disp('dasjuice')
 mex( ['-L' p ], '-lDasControl', 'dasjuice.cpp' )
